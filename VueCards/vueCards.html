@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+            <div class="card-group">
+                    <div class="card">
+                      <img src="Chase.png" class="card-img-top" alt="goodboy" style="width: 300px;">
+                      <div class="card-body">
+                        <dog class="card-title" title="Boxer"></dog>
+                        <dogtext class="card-text" words="Boxer Dog with Collar"></dogtext>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="Dingo.png" class="card-img-top" alt="bork" style="width: 300px;">
+                      <div class="card-body">
+                        <dog class="card-title" title="Dingo"></dog>
+                        <dogtext class="card-text" words="Mini Dingo with Collar"></dogtext>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="Shaggy.png" class="card-img-top" alt="boof" style="width: 300px;">
+                      <div class="card-body">
+                        <dog class="card-title" title="Shaggy"></dog>
+                        <dogtext class="card-text" words="Shaggy dog with a Bandana"></dogtext>
+                       
+                      </div>
+                    </div>
+            </div>
+    </div>
+
+    <script>
+        Vue.component('dog',{
+            props:['title'],
+            template: `<h5>{{title}}</h5>`,
+        });
+        Vue.component('dogtext',{
+            props:['words'],
+            template: `<p>{{words}}</p>`,
+        });
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                
+            }
+        })
+    </script>
+</body>
+</html>

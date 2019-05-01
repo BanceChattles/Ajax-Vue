@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <butt buttname="Nemo" buttage=1></butt>
+        <butt buttname="Marlin" buttage=4></butt>
+    </div>
+
+    <script>
+
+        Vue.component('butt', {
+            props: ['buttname', 'buttage'],
+            template: `<button @click='count++'>{{buttname}} Has Been Clicked {{count}} times. {{buttage}} years old</button>`,
+            data: function(){
+                return{
+                    count:0
+                }
+                
+            }
+        })
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Again?"
+            }
+        })
+    </script>
+</body>
+</html>

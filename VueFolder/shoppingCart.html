@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+   
+    <div id="vueApp">
+        
+        <p v-if="cartItem > 0">Cart Items: {{cartItem}}</p>
+        <p style="font-weight:bold">Selected Item: {{itemSelected}}</p>
+
+        <div v-for="item in items">
+
+            <p>{{item.name}}</p>
+            <img v-bind:src="item.imgSrc" v-bind:alt="item.name" v-on:click="showSelected(item.name)"> 
+            <!--Binds Images-->
+            <p v-if="item.ordered > 0">Quantity: {{item.ordered}}</p>
+            <button v-on:click="orderItems(item)">Order {{item.name}}</button>
+            <button v-on:click="deleteItems(item)" v-if="item.ordered > 0">Delete {{item.name}}</button>
+        </div>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#vueApp",
+            data: {
+                items: [
+                    {name:"Stitch", ordered: 0, imgSrc:"stitch.png"},
+                    {name:"Dory", ordered: 0, imgSrc:"dory.png"}
+                    
+                ],
+                cartItem: 0,
+                itemSelected: "None",
+            },
+            methods: {
+                showSelected: function(theName){
+                    this.itemSelected = theName;
+                },
+                orderItems: function(item){
+                    item.ordered += 1;
+                    this.cartItem += 1;
+                },
+                deleteItems: function(item){
+                    item.ordered -=1;
+                    this.cartItem -=1;
+                }
+                
+            }
+        });
+
+    </script>
+
+</body>
+</html>
